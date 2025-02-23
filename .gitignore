@@ -1,0 +1,22 @@
+# Ignore les fichiers Python inutiles
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore les fichiers de l'environnement virtuel
+my_venv/
+.env
+
+# Ignore la base de données SQLite (si utilisée)
+db.sqlite3
+
+# Ignore les fichiers de logs et de cache
+*.log
+*.swp
+
+# Ignore les fichiers de migration inutiles
+migrations/__pycache__/
+
+# Ignore les fichiers statiques générés
+staticfiles/
