@@ -1,0 +1,31 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ajout d'une categorie</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm" action="{% url 'add-category' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.id }}
+                    <div class="row">
+                        <div class="col-md-10 mb-2">
+                            {{ form.cat_name }}
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <input type="submit" class="btn btn-success" value="Valider">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,96 @@
+{% extends 'backend/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-9 mb-2">
+                <h3 class="card-title">{{ tooltip }}</h3>
+                {% include 'backend/includes/_messages.html' %}
+            </div>
+            <div class="col-md-3 mb-2">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                    <i class="fa fa-plus"> Ajout d'une catégoirie</i>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% include 'backend/categories/cat_modal.html' %}
+
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Noms</th>
+                <th>Ajoutes le</th>
+                <th>Modifies le</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if categories %}
+            {% for cat in categories %}
+            <tr>
+                <td>{{ cat.cat_name }}</td>
+                <td>{{ cat.created_at }}</td>
+                <td>{{ cat.updated_at }}</td>
+                <td>
+                    <button aria-expanded="false" aria-haspopup="true"
+                            class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                            type="button">
+                        <span class="sr-only">Toggle Dropdown</span>
+                        Action
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-info"
+                           href="#" onclick="getCategory({{ cat.id }})">
+                            <i class="fas fa-edit"> Modifier</i></a>
+                        <a class="dropdown-item text-danger" data-toggle="tooltip"
+                           href="#" onclick="deleteClient({{ client.id }})"><i class="fas fa-trash">
+                            Supprimer</i></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Rendering engine</th>
+                <th>Browser</th>
+                <th>Platform(s)</th>
+                <th>Engine version</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+{% include 'backend/categories/edit_cat.html' %}
+
+<script src="{% static 'backend/utils/utils.js' %}"></script>
+
+{% endblock content %}
+
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+</script>

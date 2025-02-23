@@ -1,0 +1,97 @@
+{% extends 'backend/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- SELECT2 EXAMPLE -->
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-9 mb-2">
+                <h3 class="card-title mb-2">{{ tooltip }}</h3>
+                {% include 'backend/includes/_messages.html' %}
+            </div>
+            <div class="col-md-2">
+                <div class="card-tools">
+                    <a href="{% url 'product-list' %}">
+                        <i class="fa fa-list"> Aller à la liste</i>
+                    </a>
+                    <button type="button" class="btn btn-tool ml-3" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="row">
+                {% csrf_token %}
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <!-- /.form-group mb-2 -->
+                    <div class="form-group mb-2">
+                        <label>Catégorie</label>
+                        {{ form.category }}
+                    </div>
+                    <!-- /.form-group mb-2 -->
+                </div>
+                <div class="col-md-6">
+                    <!-- /.form-group mb-2 -->
+                    <div class="form-group mb-2">
+                        <label>Produit</label>
+                        {{ form.name }}
+                    </div>
+                    <!-- /.form-group mb-2 -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <!-- /.form-group mb-2 -->
+                    <div class="form-group mb-2">
+                        <label>Prix</label>
+                        {{ form.price }}
+                    </div>
+                    <!-- /.form-group mb-2 -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <!-- /.form-group mb-2 -->
+                    <div class="form-group mb-2">
+                        <label>Quantité</label>
+                        {{ form.stock }}
+                    </div>
+                    <!-- /.form-group mb-2 -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <!-- /.form-group mb-2 -->
+                    <div class="form-group mb-2">
+                        <label>Photo</label>
+                        {{ form.thumbnail }}
+                    </div>
+                    <!-- /.form-group mb-2 -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <!-- /.form-group mb-2 -->
+                    <div class="form-group mb-2">
+                        <label>Description</label>
+                        {{ form.description }}
+                    </div>
+                    <!-- /.form-group mb-2 -->
+                </div>
+            </div>
+            <input type="submit" value="Valider" class="btn btn-primary text-right">
+        </form>
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+        the plugin.
+    </div>
+</div>
+<!-- /.card -->
+{% endblock content %}
