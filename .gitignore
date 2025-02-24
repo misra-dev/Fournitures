@@ -7,7 +7,7 @@ __pycache__/
 # Ignore les fichiers de l'environnement virtuel
 my_venv/
 .env
-
+media/
 # Ignore la base de données SQLite (si utilisée)
 db.sqlite3
 
